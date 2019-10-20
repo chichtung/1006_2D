@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 126574336}
   - component: {fileID: 126574335}
   - component: {fileID: 126574337}
+  - component: {fileID: 126574340}
   m_Layer: 0
   m_Name: "\u8C93\u54AA"
   m_TagString: Untagged
@@ -259,6 +260,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &126574340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126574334}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 994a2f763a807c5478134703a90a16e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpCount: 2
+  jump: 100
+  speed: 3
+  isground: 1
+  cat2: yaya
+  Cat: {fileID: 126574339}
+  com: {fileID: 519420032}
 --- !u!1 &151160242
 GameObject:
   m_ObjectHideFlags: 0
@@ -2035,73 +2055,7 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 0
       m_ColliderType: 1
-  m_AnimatedTiles:
-  - first: {x: 52, y: -3, z: 0}
-    second:
-      m_AnimatedSprites:
-      - {fileID: 21300000, guid: bd59bf2e866ed4529ae645637eb9c11d, type: 3}
-      - {fileID: 21300000, guid: c9e6b5e11d0ef456eb7f7ebd3e750671, type: 3}
-      - {fileID: 21300000, guid: de20f767e3f3f4aff870112daa2b2562, type: 3}
-      - {fileID: 21300000, guid: 5f35659c40d6a435fade670c478a52b1, type: 3}
-      - {fileID: 21300000, guid: 63fd366633d434aeb8ee3ee766305016, type: 3}
-      m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 0
-      m_IsLooping: 1
-  - first: {x: 14, y: -1, z: 0}
-    second:
-      m_AnimatedSprites:
-      - {fileID: 21300000, guid: bd59bf2e866ed4529ae645637eb9c11d, type: 3}
-      - {fileID: 21300000, guid: c9e6b5e11d0ef456eb7f7ebd3e750671, type: 3}
-      - {fileID: 21300000, guid: de20f767e3f3f4aff870112daa2b2562, type: 3}
-      - {fileID: 21300000, guid: 5f35659c40d6a435fade670c478a52b1, type: 3}
-      - {fileID: 21300000, guid: 63fd366633d434aeb8ee3ee766305016, type: 3}
-      m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 0
-      m_IsLooping: 1
-  - first: {x: 32, y: 1, z: 0}
-    second:
-      m_AnimatedSprites:
-      - {fileID: 21300000, guid: bd59bf2e866ed4529ae645637eb9c11d, type: 3}
-      - {fileID: 21300000, guid: c9e6b5e11d0ef456eb7f7ebd3e750671, type: 3}
-      - {fileID: 21300000, guid: de20f767e3f3f4aff870112daa2b2562, type: 3}
-      - {fileID: 21300000, guid: 5f35659c40d6a435fade670c478a52b1, type: 3}
-      - {fileID: 21300000, guid: 63fd366633d434aeb8ee3ee766305016, type: 3}
-      m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 0
-      m_IsLooping: 1
-  - first: {x: 47, y: 1, z: 0}
-    second:
-      m_AnimatedSprites:
-      - {fileID: 21300000, guid: bd59bf2e866ed4529ae645637eb9c11d, type: 3}
-      - {fileID: 21300000, guid: c9e6b5e11d0ef456eb7f7ebd3e750671, type: 3}
-      - {fileID: 21300000, guid: de20f767e3f3f4aff870112daa2b2562, type: 3}
-      - {fileID: 21300000, guid: 5f35659c40d6a435fade670c478a52b1, type: 3}
-      - {fileID: 21300000, guid: 63fd366633d434aeb8ee3ee766305016, type: 3}
-      m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 0
-      m_IsLooping: 1
-  - first: {x: 18, y: 2, z: 0}
-    second:
-      m_AnimatedSprites:
-      - {fileID: 21300000, guid: bd59bf2e866ed4529ae645637eb9c11d, type: 3}
-      - {fileID: 21300000, guid: c9e6b5e11d0ef456eb7f7ebd3e750671, type: 3}
-      - {fileID: 21300000, guid: de20f767e3f3f4aff870112daa2b2562, type: 3}
-      - {fileID: 21300000, guid: 5f35659c40d6a435fade670c478a52b1, type: 3}
-      - {fileID: 21300000, guid: 63fd366633d434aeb8ee3ee766305016, type: 3}
-      m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 0
-      m_IsLooping: 1
-  - first: {x: 131, y: 147, z: 0}
-    second:
-      m_AnimatedSprites:
-      - {fileID: 21300000, guid: bd59bf2e866ed4529ae645637eb9c11d, type: 3}
-      - {fileID: 21300000, guid: c9e6b5e11d0ef456eb7f7ebd3e750671, type: 3}
-      - {fileID: 21300000, guid: de20f767e3f3f4aff870112daa2b2562, type: 3}
-      - {fileID: 21300000, guid: 5f35659c40d6a435fade670c478a52b1, type: 3}
-      - {fileID: 21300000, guid: 63fd366633d434aeb8ee3ee766305016, type: 3}
-      m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 0
-      m_IsLooping: 1
+  m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 6
     m_Data: {fileID: 11400000, guid: e2e6a79b0d5f92b4fb00d6ef83540dce, type: 2}
