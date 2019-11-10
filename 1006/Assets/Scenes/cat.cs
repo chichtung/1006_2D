@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Tilemaps;
+//using System.Collections;
 
 public class cat : MonoBehaviour
 {
@@ -43,6 +44,9 @@ public class cat : MonoBehaviour
     public int CpCherry; //櫻桃整數
     public Text DpCherry; // 顯示櫻桃文字
     public float lose = 1;
+    public Text textdiamond, textCherry, textTime, textscore;
+    public int ScroedDiamond, ScroreCherry, StTime, Stscore;
+    public GameObject final;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -56,7 +60,7 @@ public class cat : MonoBehaviour
             CpCherry++;
             DpCherry.text = CpCherry + "";
         }
-
+  
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -71,6 +75,14 @@ public class cat : MonoBehaviour
             Cpdiamond++;
             Dpdiamond.text = Cpdiamond + "";
         }
+        if (collision.name == "死亡區域")
+        {
+            Debug.Log("死了");    
+            hp = 0;
+            Dead();
+        }
+
+
     }
 
     private void Eatdiamond(Collider2D collision)
@@ -100,6 +112,7 @@ public class cat : MonoBehaviour
         Invoke("ShowSprite", 0.2f);
         hp = hp - Injured;
         ig.fillAmount = hp / maxhp;
+        Dead();
 
     }
     private void ShowSprite()
@@ -134,6 +147,7 @@ public class cat : MonoBehaviour
     /// </summary>
     public void Jump()
     {
+        if (hp <= 0) return;
         if (isground == true)
         {
             Ani.SetBool("跳躍", true);
@@ -145,6 +159,7 @@ public class cat : MonoBehaviour
     }
     public void isGround()
     {
+        if (hp <= 0) return;  //當HP=0 跳出程式
         Ani.SetBool("滑行", true);
         cc2D.offset = new Vector2(-0.008f, -0.5f);
         cc2D.size = new Vector2(0.5f, 0.5f);
@@ -178,6 +193,62 @@ public class cat : MonoBehaviour
     {
         hp -= Time.deltaTime* lose;
         ig.fillAmount = hp / maxhp;
+        Dead();
+    }
+    private void Dead()
+    {
+        if (hp <= 0)
+        {
+            speed = 0;
+            Ani.SetBool("死亡", true);
+            Final();
+        }
+    }
+    private void Final()
+    {
+        if (final.activeInHierarchy == false)
+        {
+            final.SetActive(true);
+            StartCoroutine(FinalDiamond());
+            StartCoroutine(FinalCherry());
+        }
+    }
+    int IDiamond = 0;
+    int ICherry = 0;
+    /// <summary>
+    /// 結算鑽石
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator FinalDiamond()
+    {
+        //Stdiamond.text = "100";
+        //yield return new WaitForSeconds(1);
+        //Stdiamond.text = "200";
+        //yield return new WaitForSeconds(1);
+        //Stdiamond.text = "300";
+
+        while(Cpdiamond > 0)                                                //當數量>0時執行
+        {
+            Cpdiamond--;                                                    //鑽石數量-
+            IDiamond += 100;                                                //分數遞減
+            textdiamond.text = IDiamond.ToString();                         //更新介面
+            yield return new WaitForSeconds(1);                             //等待
+        }
+    }
+    /// <summary>
+    /// 結算櫻桃
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator FinalCherry()
+    {
+
+        while (CpCherry > 0)                                                //當數量>0時執行
+        {
+            CpCherry--;                                                     //櫻桃數量-
+            ICherry += 100;                                                 //分數遞減
+            textCherry.text = ICherry.ToString();                           //更新介面
+            yield return new WaitForSeconds(1);                             //等待
+        }
     }
 }
 
