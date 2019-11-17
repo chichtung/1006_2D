@@ -32,7 +32,7 @@ public class cat : MonoBehaviour
     private Animator Ani; //動畫
     private CapsuleCollider2D cc2D; //膠囊
     private Rigidbody2D rb2; //鋼體
-    AudioSource Audio; //聲音
+    private AudioSource Audio; //聲音
     //public AudioSource Audiojump;//跳躍聲音
     //public AudioSource AudioSliding;//滑行聲音
     public AudioClip Audiojump; //AudioClop 跳躍聲音
@@ -44,10 +44,16 @@ public class cat : MonoBehaviour
     public int CpCherry; //櫻桃整數
     public Text DpCherry; // 顯示櫻桃文字
     public float lose = 1;
-    public Text textdiamond, textCherry, textTime, textscore;
-    public int ScroedDiamond, ScroreCherry, StTime, Stscore;
+    public AudioClip soundDiamond;
+    public AudioClip soundCherry;
+    #region 欄位區域
+    [Header("結算畫面")]
     public GameObject final;
-
+    public Text textdiamond, textCherry, textTime, textTotal;
+    //public int ScroedDiamond, ScroreCherry, StTime, Stscore;
+    public int[] scores = new int[4];
+    #endregion
+ 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.name == "地板")
@@ -209,37 +215,54 @@ public class cat : MonoBehaviour
         if (final.activeInHierarchy == false)
         {
             final.SetActive(true);
-            StartCoroutine(FinalDiamond());
-            StartCoroutine(FinalCherry());
+            StartCoroutine(FinalCaculate(Cpdiamond,0, 100,textdiamond, soundDiamond));
+            StartCoroutine(FinalCaculate(CpCherry,1,300, textCherry, soundCherry,Cpdiamond*0.2f));
+            int time = (int)Time.timeSinceLevelLoad; // int 轉變整數的型態 小數點去掉
+            StartCoroutine(FinalCaculate(time, 2, 200, textTime, AudioSliding, Cpdiamond * 0.2f + CpCherry * 0.2f));
+            int total = scores[0] + scores[1] + scores[2] / 100;
+            StartCoroutine(FinalCaculate(total, 3, 100, textTotal, AudioSliding, Cpdiamond * 0.2f + CpCherry * 0.2f +time*0.2f));
         }
     }
-    int IDiamond = 0;
-    int ICherry = 0;
+    
+    
+   // int IDiamond = 0;
+   // int ICherry = 0;
     /// <summary>
     /// 結算鑽石
     /// </summary>
     /// <returns></returns>
-    private IEnumerator FinalDiamond()
+    private IEnumerator FinalCaculate(int count, int scoreIndex, int addScore,Text textFinal, AudioClip sound, float wait =0,float waitTime =0.2f)
     {
+
+        yield return new WaitForSeconds(wait);
         //Stdiamond.text = "100";
         //yield return new WaitForSeconds(1);
         //Stdiamond.text = "200";
         //yield return new WaitForSeconds(1);
         //Stdiamond.text = "300";
 
-        while(Cpdiamond > 0)                                                //當數量>0時執行
+        while (count > 0)                                                 //當數量>0時執行
         {
-            Cpdiamond--;                                                    //鑽石數量-
-            IDiamond += 100;                                                //分數遞減
-            textdiamond.text = IDiamond.ToString();                         //更新介面
-            yield return new WaitForSeconds(1);                             //等待
+            count--;                                                      //鑽石數量-
+            scores[scoreIndex] += addScore;                                //分數遞減
+            textFinal.text = scores[scoreIndex].ToString();              //更新介面
+            Audio.PlayOneShot(sound);
+            yield return new WaitForSeconds(waitTime);                    //等待
+        }
+
+        if (scoreIndex != 3) scores[3] += scores[scoreIndex];
+        if (scoreIndex == 2)
+        {
+            int total = scores[3] / 100;
+            scores[3] = 0;
+            StartCoroutine(FinalCaculate(total, 3, 100, textTotal, AudioSliding, 0, 0.05f));
         }
     }
     /// <summary>
     /// 結算櫻桃
     /// </summary>
     /// <returns></returns>
-    private IEnumerator FinalCherry()
+   /* private IEnumerator FinalCherry()
     {
 
         while (CpCherry > 0)                                                //當數量>0時執行
@@ -250,6 +273,7 @@ public class cat : MonoBehaviour
             yield return new WaitForSeconds(1);                             //等待
         }
     }
+    */
 }
 
 
