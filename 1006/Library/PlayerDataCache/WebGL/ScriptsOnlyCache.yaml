@@ -3,12 +3,6 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - GameManager
     - cat
-    Unity.2D.Tilemap.Editor.dll:
-    - UnityEditor.Tilemaps.GridPaintingState
-    - UnityEditor.Tilemaps.GridPaletteBrushes
-    - UnityEditor.Tilemaps.GridPalettes
-    - UnityEditor.Tilemaps.SceneViewGridManager
-    - UnityEditor.Tilemaps.TileDragAndDropManager
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
     - TMPro.TMP_Settings
@@ -17,6 +11,7 @@ ScriptsOnlyBuild:
     - TMPro.TextMeshProUGUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
+    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.EventTrigger
@@ -67,37 +62,37 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 598}
+      Script: {instanceID: 198}
     - Class: 114
-      Script: {instanceID: 9682}
+      Script: {instanceID: 14212}
     - Class: 114
-      Script: {instanceID: 9844}
+      Script: {instanceID: 14358}
     - Class: 114
-      Script: {instanceID: 9884}
+      Script: {instanceID: 14398}
     - Class: 114
-      Script: {instanceID: 10282}
+      Script: {instanceID: 14762}
     - Class: 114
-      Script: {instanceID: 10302}
+      Script: {instanceID: 14782}
     - Class: 114
-      Script: {instanceID: 10436}
+      Script: {instanceID: 14900}
     - Class: 114
-      Script: {instanceID: 10650}
+      Script: {instanceID: 15094}
     - Class: 114
-      Script: {instanceID: 10872}
+      Script: {instanceID: 15294}
     - Class: 114
-      Script: {instanceID: 10886}
+      Script: {instanceID: 15306}
     - Class: 114
-      Script: {instanceID: 11060}
+      Script: {instanceID: 15460}
     - Class: 114
-      Script: {instanceID: 11122}
+      Script: {instanceID: 15516}
     - Class: 114
-      Script: {instanceID: 11288}
+      Script: {instanceID: 15662}
     - Class: 114
-      Script: {instanceID: 11492}
+      Script: {instanceID: 15854}
     - Class: 114
-      Script: {instanceID: 11516}
+      Script: {instanceID: 15876}
     - Class: 114
-      Script: {instanceID: 14162}
+      Script: {instanceID: 17364}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -158,29 +153,29 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 598}
+      Script: {instanceID: 198}
     - Class: 114
-      Script: {instanceID: 9682}
+      Script: {instanceID: 14212}
     - Class: 114
-      Script: {instanceID: 9844}
+      Script: {instanceID: 14358}
     - Class: 114
-      Script: {instanceID: 9884}
+      Script: {instanceID: 14398}
     - Class: 114
-      Script: {instanceID: 10282}
+      Script: {instanceID: 14762}
     - Class: 114
-      Script: {instanceID: 10436}
+      Script: {instanceID: 14900}
     - Class: 114
-      Script: {instanceID: 10650}
+      Script: {instanceID: 15094}
     - Class: 114
-      Script: {instanceID: 11122}
+      Script: {instanceID: 15516}
     - Class: 114
-      Script: {instanceID: 11458}
+      Script: {instanceID: 15822}
     - Class: 114
-      Script: {instanceID: 11492}
+      Script: {instanceID: 15854}
     - Class: 114
-      Script: {instanceID: 11516}
+      Script: {instanceID: 15876}
     - Class: 114
-      Script: {instanceID: 14162}
+      Script: {instanceID: 17364}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -636,4 +631,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - "Assets/\u5834\u666F/\u4ECB\u9762.unity"
   - "Assets/\u5834\u666F/\u95DC\u53611.unity"
-  playerPath: C:/Users/user/Documents/GitHub/1006_2D/Catrun
+  playerPath: C:/Users/user/Documents/GitHub/1006_2D/catrun
